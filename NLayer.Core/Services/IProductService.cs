@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NLayer.Core.Services
+namespace NLayer.Core
 {
     public interface IProductService:IService<Product>
     {

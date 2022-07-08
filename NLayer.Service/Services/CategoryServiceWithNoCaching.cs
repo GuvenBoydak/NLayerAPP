@@ -3,12 +3,12 @@ using NLayer.Core;
 
 namespace NLayer.Service
 {
-    public class CategoryService : Service<Category>, ICategoryService
+    public class CategoryServiceWithNoCaching : Service<Category>, ICategoryService
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly IMapper _mapper;
 
-        public CategoryService(IGenericRepository<Category> repository, IUnitOfWork unitOfWork, ICategoryRepository categoryRepository, IMapper mapper) : base(repository, unitOfWork)
+        public CategoryServiceWithNoCaching(IGenericRepository<Category> repository, IUnitOfWork unitOfWork, ICategoryRepository categoryRepository, IMapper mapper) : base(repository, unitOfWork)
         {
             _categoryRepository = categoryRepository;
             _mapper = mapper;

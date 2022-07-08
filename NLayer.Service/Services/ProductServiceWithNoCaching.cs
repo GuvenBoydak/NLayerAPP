@@ -1,16 +1,14 @@
 ﻿using AutoMapper;
 using NLayer.Core;
-using NLayer.Core.Repositories;
-using NLayer.Core.Services;
 
 namespace NLayer.Service.Services
 {
-    public class ProductService : Service<Product>, IProductService
+    public class ProductServiceWithNoCaching : Service<Product>, IProductService
     {
         private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
 
-        public ProductService(IProductRepository productRepository, IMapper mapper,IGenericRepository<Product> repository, IUnitOfWork unitOfWork) : base(repository, unitOfWork)
+        public ProductServiceWithNoCaching(IProductRepository productRepository, IMapper mapper,IGenericRepository<Product> repository, IUnitOfWork unitOfWork) : base(repository, unitOfWork)
         {
             _productRepository = productRepository;
             _mapper = mapper;

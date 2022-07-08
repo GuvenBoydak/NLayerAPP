@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NLayer.Core.Repositories
+namespace NLayer.Core
 {
     public interface IProductRepository:IGenericRepository<Product>
     {

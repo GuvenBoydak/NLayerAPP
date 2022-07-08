@@ -1,13 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using NLayer.Core;
-using NLayer.Core.Services;
 
 namespace NLayer.API.Controllers
 {
-    //Bir Filter constractorda bir parametre alıyorsa ServiceFilter üzerindne kullanılmalı ve program.cs e service e eklememiz gerekiyor.
-    //ServiceFilter a Yazdıgımız NotFoundFilter i tip olarak veriyoruz.
-    [ServiceFilter(typeof(NotFoundFilter<Product>))]
+
     public class ProductController : CustomeBaseController
     {
         private readonly IMapper _mapper;
@@ -35,6 +32,9 @@ namespace NLayer.API.Controllers
             return CreateActionResult(CustomResponseDto<List<ProductDto>>.Success(200, productDtos));
         }
 
+        //Bir Filter constractorda bir parametre alıyorsa ServiceFilter üzerindne kullanılmalı ve program.cs e service e eklememiz gerekiyor.
+        //ServiceFilter a Yazdıgımız NotFoundFilter i tip olarak veriyoruz.
+        [ServiceFilter(typeof(NotFoundFilter<Product>))]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById([FromRoute]int id)
         {
@@ -55,6 +55,9 @@ namespace NLayer.API.Controllers
             return CreateActionResult(CustomResponseDto<ProductDto>.Success(201, response));
         }
 
+        //Bir Filter constractorda bir parametre alıyorsa ServiceFilter üzerindne kullanılmalı ve program.cs e service e eklememiz gerekiyor.
+        //ServiceFilter a Yazdıgımız NotFoundFilter i tip olarak veriyoruz.
+        [ServiceFilter(typeof(NotFoundFilter<Product>))]
         [HttpPut]
         public async Task<IActionResult> Update(ProductUpdateDto productUpdateDto)
         {
@@ -63,6 +66,9 @@ namespace NLayer.API.Controllers
             return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
         }
 
+        //Bir Filter constractorda bir parametre alıyorsa ServiceFilter üzerindne kullanılmalı ve program.cs e service e eklememiz gerekiyor.
+        //ServiceFilter a Yazdıgımız NotFoundFilter i tip olarak veriyoruz.
+        [ServiceFilter(typeof(NotFoundFilter<Product>))]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
