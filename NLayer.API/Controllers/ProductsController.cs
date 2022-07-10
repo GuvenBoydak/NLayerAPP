@@ -5,12 +5,12 @@ using NLayer.Core;
 namespace NLayer.API.Controllers
 {
 
-    public class ProductController : CustomeBaseController
+    public class ProductsController : CustomeBaseController
     {
         private readonly IMapper _mapper;
         private readonly IProductService _service;
 
-        public ProductController(IMapper mapper, IProductService productService)
+        public ProductsController(IMapper mapper, IProductService productService)
         {
             _mapper = mapper;
             _service = productService;
@@ -19,7 +19,8 @@ namespace NLayer.API.Controllers
         [HttpGet("[action]")]
         public async Task<IActionResult> GetProductsWithCategory()
         {
-            return CreateActionResult(await _service.GetProductsWithCategory());
+            List<ProductWithCategoryDto> product = await _service.GetProductsWithCategory();
+            return CreateActionResult(CustomResponseDto<List<ProductWithCategoryDto>>.Success(200,product));
         }
 
         [HttpGet]
@@ -36,7 +37,7 @@ namespace NLayer.API.Controllers
         //ServiceFilter a Yazdıgımız NotFoundFilter i tip olarak veriyoruz.
         [ServiceFilter(typeof(NotFoundFilter<Product>))]
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById([FromRoute]int id)
+        public async Task<IActionResult> GetById(int id)
         {
             Product product = await _service.GetByIdAsync(id);
 

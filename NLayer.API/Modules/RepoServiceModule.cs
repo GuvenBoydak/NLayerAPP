@@ -30,8 +30,8 @@ namespace NLayer.API.Modules
             //apiAssembly, repoAssembly, serviceAssembly git bunlarda ara x=>.x.Name'i "Service" ile bitenleri al ve bunlarında Interfacelerinide implemente et diyoruz.InstancePerLifetimeScope ise => Asp.Net Core daki AddScope a karşılık gelıyor.
             builder.RegisterAssemblyTypes(apiAssembly, repoAssembly, serviceAssembly).Where(x => x.Name.EndsWith("Service")).AsImplementedInterfaces().InstancePerLifetimeScope();
 
-            builder.RegisterType<ProductServiceWithCaching>().As<IProductService>();
-            builder.RegisterType<CategoryServiceWithCaching>().As<ICategoryService>();
+            //builder.RegisterType<ProductServiceWithCaching>().As<IProductService>();
+            //builder.RegisterType<CategoryServiceWithCaching>().As<ICategoryService>();
 
 
         }
